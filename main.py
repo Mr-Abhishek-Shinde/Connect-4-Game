@@ -17,7 +17,7 @@ def display_menu(screen):
     screen.blit(text5, (50, 250))
 
 def main():
-    print("Welcome to Connect 4!")
+    print("--------------- Welcome to Connect 4 Game! ---------------")
 
     ROWS = 6
     COLS = 7
@@ -49,12 +49,10 @@ def main():
                         if choice == 1:
                             start_human_vs_human_game(screen, my_font)
                         elif choice == 2:
-                            start_alpha_beta_game(screen, my_font)
-                        elif choice == 3:
-                            # ai vs human (alpha beta)
                             pass
+                        elif choice == 3:
+                            start_alpha_beta_game(screen, my_font)
                         elif choice == 4:
-                            # ai vs human (Monte Carlo Tree Search)
                             pass
                         elif choice == 5:
                             print("Exiting the game. Goodbye!")

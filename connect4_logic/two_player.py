@@ -34,7 +34,7 @@ class Connect4Game:
         board = np.zeros((ROWS, COLS))
         return board
 
-    def drop_piece(self, col, row, piece):
+    def drop_piece(self, row, col, piece):
         self.board[row][col] = piece
 
     def is_valid_location(self, col):
@@ -119,7 +119,7 @@ def run_pygame_ui(game):
 
                 if game.is_valid_location(col):
                     row = game.get_next_open_row(col)
-                    game.drop_piece(col, row, game.turn + 1)
+                    game.drop_piece(row, col, game.turn + 1)
 
                     if game.winning_move(game.turn + 1):
                         print(f"PLAYER {game.turn + 1} WON!")
