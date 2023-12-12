@@ -4,11 +4,11 @@ from connect4_logic.alpha_beta import start_alpha_beta_game
 
 def display_menu(screen):
     font = pygame.font.Font(None, 36)
-    text1 = font.render("1. Human vs Human", True, (255, 255, 255))
-    text2 = font.render("2. AI vs Human (Mini-Max)", True, (255, 255, 255))
-    text3 = font.render("3. AI vs Human (Alpha-Beta Pruning)", True, (255, 255, 255))
-    text4 = font.render("4. AI vs Human (Monte Carlo Tree Search)", True, (255, 255, 255))
-    text5 = font.render("5. Quit", True, (255, 255, 255))
+    text1 = font.render("1. Human vs Human", True, (0, 0, 0))
+    text2 = font.render("2. AI vs Human (Mini-Max)", True, (0, 0, 0))
+    text3 = font.render("3. AI vs Human (Alpha-Beta Pruning)", True, (0, 0, 0))
+    text4 = font.render("4. AI vs Human (Monte Carlo Tree Search)", True, (0, 0, 0))
+    text5 = font.render("5. Quit", True, (0, 0, 0))
 
     screen.blit(text1, (50, 50))
     screen.blit(text2, (50, 100))
@@ -31,6 +31,11 @@ def main():
 
     screen = pygame.display.set_mode(size)
     my_font = pygame.font.SysFont("monospace", 75)
+    
+    color = (255, 255, 255)
+    
+    screen.fill(color)
+    pygame.display.flip()
 
     pygame.display.set_caption("Connect 4 Menu")
 
@@ -59,7 +64,7 @@ def main():
                             pygame.quit()
                             return
 
-        screen.fill((0, 0, 0))
+        # screen.fill((0, 0, 0))
         display_menu(screen)
         pygame.display.flip()
 
