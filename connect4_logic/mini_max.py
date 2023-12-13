@@ -177,11 +177,9 @@ def is_terminal_node(game):
     return game.winning_move(PLAYER_PIECE) or game.winning_move(AI_PIECE) or len(game.get_valid_locations()) == 0
 
 
-def minimax(game, depth, alpha, beta, maximizing_player):
+def minimax(game, depth, maximizing_player):
     board = game.board
-
     valid_locations = game.get_valid_locations()
-
     is_terminal = is_terminal_node(game)
 
     if depth == 0 or is_terminal:
@@ -192,13 +190,11 @@ def minimax(game, depth, alpha, beta, maximizing_player):
                 return (None, -10000000)
             else:
                 return (None, 0)
-
         else:
             return (None, score_position(game, AI_PIECE))
 
     if maximizing_player:
         value = -math.inf
-
         column = random.choice(valid_locations)
 
         for col in valid_locations:
@@ -207,35 +203,32 @@ def minimax(game, depth, alpha, beta, maximizing_player):
             game_copy.board = np.copy(game.board)
             game_copy.drop_piece(row, col, AI_PIECE)
 
-            new_score = minimax(game_copy, depth-1, alpha, beta, False)[1]
+            new_score = minimax(game_copy, depth-1, False)[1]
 
             if new_score > value:
                 value = new_score
                 column = col
-            alpha = max(value, alpha) 
-            if alpha >= beta:
-                break
 
         return column, value
     
     else:
         value = math.inf
         column = random.choice(valid_locations)
+
         for col in valid_locations:
             row = game.get_next_open_row(col)
             game_copy = Connect4Game()
             game_copy.board = np.copy(game.board)
             game_copy.drop_piece(row, col, PLAYER_PIECE)
 
-            new_score = minimax(game_copy, depth-1, alpha, beta, True)[1]
+            new_score = minimax(game_copy, depth-1, True)[1]
 
             if new_score < value:
                 value = new_score
                 column = col
-            beta = min(value, beta) 
-            if alpha >= beta:
-                break
+
         return column, value
+
 
 
 def run_pygame_ui(game):
@@ -287,7 +280,7 @@ def run_pygame_ui(game):
                         
         if game.turn == AI_TURN and not game_over and not_over:
 
-            col, minimax_score = minimax(game, 5, -math.inf, math.inf, True)
+            col, minimax_score = minimax(game, 5, True)
 
             if game.is_valid_location(col):
                 pygame.time.wait(500)
@@ -311,7 +304,7 @@ def run_pygame_ui(game):
 
 
 
-def start_alpha_beta_game(scr, fnt):
+def start_mini_max_game(scr, fnt):
     global screen, my_font
     screen = scr
     my_font = fnt

@@ -1,6 +1,7 @@
 import pygame
 from connect4_logic.two_player import start_human_vs_human_game
 from connect4_logic.alpha_beta import start_alpha_beta_game
+from connect4_logic.mini_max import start_mini_max_game
 
 def display_menu(screen):
     font = pygame.font.Font(None, 36)
@@ -54,6 +55,7 @@ def main():
                         if choice == 1:
                             start_human_vs_human_game(screen, my_font)
                         elif choice == 2:
+                            start_mini_max_game(screen, my_font)
                             pass
                         elif choice == 3:
                             start_alpha_beta_game(screen, my_font)
