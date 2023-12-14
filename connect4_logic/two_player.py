@@ -122,7 +122,7 @@ def run_pygame_ui(game):
                     game.drop_piece(row, col, game.turn + 1)
 
                     if game.winning_move(game.turn + 1):
-                        print(f"PLAYER {game.turn + 1} WON!")
+                        print(f"Player {game.turn + 1} Won!")
                         label = my_font.render(f"PLAYER {game.turn + 1} WON!", 1, BLACK if game.turn == 0 else BLACK)
                         screen.blit(label, (40, 10))
                         game.not_over = False

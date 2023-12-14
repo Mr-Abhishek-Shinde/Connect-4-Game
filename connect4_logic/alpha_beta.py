@@ -270,7 +270,7 @@ def run_pygame_ui(game):
                         row = game.get_next_open_row(col)
                         game.drop_piece(row, col, PLAYER_PIECE)
                         if game.winning_move(PLAYER_PIECE):
-                            print("YOU WON!")
+                            print("You Won!")
                             label = my_font.render("YOU WON!", 1, BLACK)
                             screen.blit(label, (40, 10))
                             not_over = False
@@ -294,7 +294,7 @@ def run_pygame_ui(game):
                 row = game.get_next_open_row(col)
                 game.drop_piece(row, col, AI_PIECE)
                 if game.winning_move(AI_PIECE):
-                    print("AI WON!")
+                    print("AI Won!")
                     label = my_font.render("AI WON!", 1, BLACK)
                     screen.blit(label, (40, 10))
                     not_over = False

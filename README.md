@@ -1,1 +1,3 @@
 # CONNECT 4 - GAME IMPLEMENTATION
+
+### SEM5 - AI Project
