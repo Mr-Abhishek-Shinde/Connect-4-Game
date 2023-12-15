@@ -8,14 +8,14 @@ def display_menu(screen):
     text1 = font.render("1. Human vs Human", True, (0, 0, 0))
     text2 = font.render("2. AI vs Human (Mini-Max)", True, (0, 0, 0))
     text3 = font.render("3. AI vs Human (Alpha-Beta Pruning)", True, (0, 0, 0))
-    text4 = font.render("4. AI vs Human (Monte Carlo Tree Search)", True, (0, 0, 0))
-    text5 = font.render("5. Quit", True, (0, 0, 0))
+    # text4 = font.render("4. AI vs Human (Monte Carlo Tree Search)", True, (0, 0, 0))
+    text4 = font.render("4. Quit", True, (0, 0, 0))
 
     screen.blit(text1, (50, 50))
     screen.blit(text2, (50, 100))
     screen.blit(text3, (50, 150))
     screen.blit(text4, (50, 200))
-    screen.blit(text5, (50, 250))
+    # screen.blit(text5, (50, 250))
 
 def main():
     print("--------------- Welcome to Connect 4 Game! ---------------")
@@ -49,7 +49,7 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
-                if 50 < x < 350:
+                if 50 < x < 250:
                     choice = (y - 50) // 50 + 1
                     if 1 <= choice <= 5:
                         if choice == 1:
@@ -59,9 +59,9 @@ def main():
                             pass
                         elif choice == 3:
                             start_alpha_beta_game(screen, my_font)
+                        # elif choice == 4:
+                        #     pass
                         elif choice == 4:
-                            pass
-                        elif choice == 5:
                             print("Exiting the game. Goodbye!")
                             pygame.quit()
                             return
